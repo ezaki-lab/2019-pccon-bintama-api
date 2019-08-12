@@ -27,9 +27,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use slim
-gem 'slim-rails', '~> 3.2'
-
 # User BULMA
 gem "bulma-rails", "~> 0.4.2"
 
