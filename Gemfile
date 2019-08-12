@@ -30,8 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use slim
 gem 'slim-rails', '~> 3.2'
 
-# User semantic-ui
-gem 'semantic-ui-sass', '~> 2.4'
+# User BULMA
+gem "bulma-rails", "~> 0.4.2"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
