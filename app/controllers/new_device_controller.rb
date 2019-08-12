@@ -1,0 +1,2 @@
+class NewDeviceController < ApplicationController
+end
