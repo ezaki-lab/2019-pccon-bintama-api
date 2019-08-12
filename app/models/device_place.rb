@@ -1,0 +1,2 @@
+class DevicePlace < ApplicationRecord
+end
