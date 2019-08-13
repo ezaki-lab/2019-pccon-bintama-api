@@ -1,0 +1,40 @@
+<body class="layout-default">
+	<section class="hero is-fullheight is-medium is-primary is-bold">
+		<div class="hero-body">
+			<div class="container">
+				<div class="columns is-centered">
+					<article class="card is-rounded">
+						<div class="card-content">
+						<%= form_for(@new_user, :url => {:action => :create}) do |f| %>
+							<p class="control has-icon">
+								<%= f.label :user_id, "ユーザーID" %><br>
+								<%= f.text_field :user_id, :class=>"input" %>
+								<i class="fa fa-lock"></i>
+							</p>
+							<p class="control has-icon">
+								<%= f.label :email, "メールアドレス" %><br>
+								<%= f.email_field :email, :class=>"input" %>
+								<i class="fa fa-envelope"></i>
+							</p>
+							<p class="control has-icon">
+								<%= f.label :password, "パスワード" %><br>
+								<%= f.password_field :password, :class=>"input" %>
+								<i class="fa fa-lock"></i>
+							</p>
+							<p class="control has-icon">
+								<%= f.label :password_confirmation, "もう1度パスワードを入力してください" %><br>
+								<%= f.password_field :password_confirmation, :class=>"input" %>
+								<i class="fa fa-lock"></i>
+							</p>
+							<p><br></p>
+							<p class="control">
+								<%= f.submit "登録", :class=>"button is-primary is-medium is-fullwidth" %>
+							</p>
+						<% end %>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
