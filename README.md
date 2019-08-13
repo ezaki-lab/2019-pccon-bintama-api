@@ -10,7 +10,7 @@
 
 # データベース構造
 
-### deviceテーブル
+### devicesテーブル
 
 モデル名：Device
 
@@ -18,10 +18,9 @@
 |------------|-------------|--------------------------------------------|
 |id          |integer      |デバイスのID                                  |
 |token       |string       |デバイスのトークン（個々のデバイスを識別するもの。   |
-|pass        |string       |デバイスのパスワード。DBにはハッシュ化したものを格納 |
 |url         |string       |デバイスのURL                                 |
 
-### device_placeテーブル
+### device_placesテーブル
 
 モデル名：DevicePlace
 
@@ -32,7 +31,7 @@
 |latitude    |string       |緯度                                         |
 |longitude   |string       |経度                                         |
 
-### userテーブル
+### usersテーブル
 
 モデル名：User
 
@@ -43,9 +42,9 @@ has_one: device_user
 |id          |integer      |                                            |
 |user_id     |string       |ユーザーが自由に決めるID                        |
 |email       |string       |ユーザーのメールアドレス                        |
-|pass        |string       |ユーザーのパスワード                            |
+|password    |string       |ユーザーのパスワード                            |
 
-### device_userテーブル
+### device_usersテーブル
 
 モデル名：DeviceUser
 
