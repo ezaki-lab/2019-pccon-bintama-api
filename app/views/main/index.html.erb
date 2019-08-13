@@ -1,4 +1,4 @@
-<section class="hero is-info is-fullheight">
+<section class="hero is-fullheight is-medium is-primary is-bold">
   <div class="hero-head">
       <div class="container">
         <div class="navbar-brand">
@@ -9,6 +9,9 @@
           </span>
         </div>
         <div id="navbarMenu" class="navbar-menu">
+          <% if session[:user_id] != nil %>
+            <p><%= flash[:notice] %></p>
+          <% end %>
           <div class="navbar-end">
             <span class="navbar-item">
               <a class="button is-white is-outlined" href="#">
@@ -41,7 +44,7 @@
           Toba Bintama API Server
         </h1>
         <h2 class="subtitle">
-          ようこそ、TABSへ。TABSはあなたのIoTユニットを使ったアプリケーションを簡単に構築することのできるAPIです。デバイスの登録やドキュメントは別途定めてあります。
+          ようこそ、TABSへ。TABSはあなたのIoTユニットを使ったアプリケーションを簡単に構築することのできるAPIです。ドキュメントは誰でも読めますが、デバイスの登録にはサインインが必要です。
         </h2>
     	</div>
   	</div>
