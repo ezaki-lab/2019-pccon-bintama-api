@@ -1,24 +1,58 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Dockerを導入したい....!!まじで...!
 
-Things you may want to cover:
+ブランチを切るときはissueベースで切ろう。
 
-* Ruby version
+動作確認が不十分なやつはプルリクエスト・マージリクエストを送らないでね。
 
-* System dependencies
+動作確認が不十分だけどコードレビューをしてほしいときはコミットメッセージの前に「WIP:」をつけよう。
 
-* Configuration
+# データベース構造
 
-* Database creation
+### deviceテーブル
 
-* Database initialization
+モデル名：Device
 
-* How to run the test suite
+|カラム名     |カラムの型     |説明                                         |
+|------------|-------------|--------------------------------------------|
+|id          |integer      |デバイスのID                                  |
+|token       |string       |デバイスのトークン（個々のデバイスを識別するもの。   |
+|pass        |string       |デバイスのパスワード。DBにはハッシュ化したものを格納 |
+|url         |string       |デバイスのURL                                 |
 
-* Services (job queues, cache servers, search engines, etc.)
+### device_placeテーブル
 
-* Deployment instructions
+モデル名：DevicePlace
 
-* ...
+|カラム名     |カラムの型     |説明                                         |
+|------------|-------------|--------------------------------------------|
+|id          |integer      |                                            |
+|device_id   |integer      |その位置情報が表すデバイスのID                   |
+|latitude    |string       |緯度                                         |
+|longitude   |string       |経度                                         |
+
+### userテーブル
+
+モデル名：User
+
+has_one: device_user
+
+|カラム名     |カラムの型     |説明                                         |
+|------------|-------------|--------------------------------------------|
+|id          |integer      |                                            |
+|user_id     |string       |ユーザーが自由に決めるID                        |
+|email       |string       |ユーザーのメールアドレス                        |
+|pass        |string       |ユーザーのパスワード                            |
+
+### device_userテーブル
+
+モデル名：DeviceUser
+
+belong_to: user
+
+|カラム名     |カラムの型     |説明                                         |
+|------------|-------------|--------------------------------------------|
+|id          |integer      |                                            |
+|device_id   |integer      |デバイスのID                                  |
+|user_id     |string       |ユーザーID                                    |
