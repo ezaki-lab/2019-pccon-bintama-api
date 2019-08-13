@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :new_user, only: [:index, :create]
   resources :new_device, only: [:index, :new, :create]
 
-  namespace :api do
+  scope :api do
     post 'led', to: 'api#led'
     post 'image', to: 'api#image'
-    get 'place', to: 'api#place'
+    get 'place/:id', to: 'api#place'
+    get 'new/:token/:url', to: 'api#new'
   end
 end
