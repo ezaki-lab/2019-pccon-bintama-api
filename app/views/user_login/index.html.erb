@@ -5,6 +5,7 @@
 				<div class="columns is-centered">
 					<article class="card is-rounded">
 						<div class="card-content">
+						<p class="control has-icon"><%= flash[:notice] %><i class="fa fa-envelope"></i></p>
 						<%= form_for(@login_user, :url => {:action => :create}) do |f| %>
 							<p class="control has-icon">
 								<%= f.label :user_id, "ユーザーID" %><br>
