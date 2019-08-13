@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # User BULMA
 gem "bulma-rails", "~> 0.4.2"
 
+gem 'bcrypt', '3.1.11'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

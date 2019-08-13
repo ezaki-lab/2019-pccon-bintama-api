@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_174907) do
+ActiveRecord::Schema.define(version: 2019_08_13_072557) do
 
   create_table "device_places", force: :cascade do |t|
     t.integer "device_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_174907) do
   create_table "users", force: :cascade do |t|
     t.string "user_id"
     t.string "email"
-    t.string "pass"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
