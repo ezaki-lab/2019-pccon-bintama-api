@@ -30,9 +30,10 @@
                 <span>Documents</span>
               </a>
             </span>
+          <% if session[:user_id] != nil %>
             <span class="navbar-item">
-              <a class="button is-white is-outlined" href="#">
-                <span>Device</span>
+              <a class="button is-white is-outlined" href="new_device">
+                <span>New Device</span>
               </a>
             </span>
             <span class="navbar-item">
@@ -40,6 +41,7 @@
                 <span>User</span>
               </a>
             </span>
+          <% end %>
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@
           Toba API Bintama Server
         </h1>
         <h2 class="subtitle">
-          ようこそ、TABSへ。TABSはあなたのIoTユニットを使ったアプリケーションを簡単に構築することのできるAPIです。ドキュメントは誰でも読めますが、デバイスの登録にはサインインが必要です。
+          ようこそ、TABSへ。TABSはあなたのIoTユニットを使ったアプリケーションを簡単に構築することのできるAPIです。ドキュメントは誰でも読めますが、デバイスの登録、管理にはサインインが必要です。
         </h2>
     	</div>
   	</div>
