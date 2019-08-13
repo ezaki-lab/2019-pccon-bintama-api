@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   resources :main, only: [:index]
   resources :user_login, only: [:index, :create]
   resources :new_user, only: [:index, :create]
+
+  namespace :api do
+    post 'led', to: 'api#led'
+    post 'image', to: 'api#image'
+    get 'place', to: 'api#place'
+  end
 end
