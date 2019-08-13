@@ -1,0 +1,47 @@
+<section class="hero is-fullheight is-medium is-primary is-bold">
+  <div class="hero-head">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <p><%= flash[:notice] %></p>
+					<div class="navbar-end">
+						<span class="navbar-item">
+							<a class="button is-white is-outlined" href="../main">
+								<span>Home</span>
+							</a>
+						</span>
+						<span class="navbar-item">
+              <a class="button is-white is-outlined" href="#">
+                <span>Documents</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-white is-outlined" href="#">
+                <span>User</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="column is-6 is-offset-3">
+        <h1 class="title">
+          New Device
+        </h1>
+        <h2 class="subtitle">
+					このAPI（TABS）を使用したアプリケーションを開発する場合、あなたのIoTデバイスをAPI上で登録する必要があります。
+				</h2>
+				<a class="button is-white is-outlined" href="new_device/new"><span>デバイスを登録する</span></a>
+    	</div>
+  	</div>
+	</div>
+</section>
+<script async type="text/javascript" src="application.js"></script>
