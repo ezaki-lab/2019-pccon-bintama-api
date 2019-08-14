@@ -22,6 +22,10 @@ class ApiController < ApplicationController
 	end
 
 	def image
+		url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/image/" + params[:path] + "/" + params[:second].to_s
+		Net::HTTP.get_print(URI.parse(url))
+
+		render json: { status: 'SUCCESS', message: 'Success! API commanded to your IoT device!' }
 	end
 
 	def place
