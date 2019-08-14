@@ -1,0 +1,8 @@
+alias up="bundle exec rails s"
+alias db="bundle exec rails db"
+alias migrate="bundle exec rails db:migrate"
+alias seed="bundle exec rails db:seed"
+alias controller="bundle exec rails controller"
+alias model="bundle exec rails model"
+alias install="bundle install"
+alias update="bundle update"
