@@ -1,0 +1,75 @@
+<section class="hero is-fullheight is-medium is-primary is-bold">
+  <div class="hero-head">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+              <a class="button is-white is-outlined" href="main">
+                <span>Home</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-white is-outlined" href="#">
+                <span>Documents</span>
+              </a>
+            </span>
+            <span class="navbar-item">
+              <a class="button is-white is-outlined" href="new_device">
+                <span>New Device</span>
+              </a>
+            </span>
+					</div>
+				</div>
+      </div>
+  </div>
+  <div class="hero-body">
+		<div class="container has-text-centered">
+			<h1 class="title"><%= session[:user_id] %> さんのユーザー情報</h1>
+			<h2 class="subtitle">あなたのユーザー情報、デバイス登録情報などを確認することができます。</h2>
+			
+			<div class="left"><p><strong>ユーザー情報</strong></p></div>
+			<div class="card">
+				<header class="card-header">
+					<p class="card-header-title"><%= @user.user_id %></p>
+				</header>
+			<div class="card-content">
+				<div class="content">
+					<div class="left">
+						<strong>ユーザーID:</strong><%= session[:user_id] %><br>
+						<strong>e-mail:</strong><%= @user.email %>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<p><br><br></p>
+
+			<div class="left"><p><strong>デバイス情報　　＊登録しているデバイスのみ表示されます。</strong></p></div>
+			<% @device.each do |d| %>
+					<div class="card">
+						<header class="card-header">
+							<p class="card-header-title"><strong>デバイスID:</strong><%= d[0] %></p>
+						</header>
+					<div class="card-content">
+						<div class="content">
+							<div class="left">
+								<strong>TOKEN:</strong><%= d[1] %><br>
+								<strong>URL:</strong><%= d[2] %><br>
+								<strong>最終通信:</strong><%= d[3] %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	</div>
+</section>
+<script async type="text/javascript" src="application.js"></script>
