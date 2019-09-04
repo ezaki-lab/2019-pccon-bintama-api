@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :new_user, only: [:index, :create]
   resources :new_device, only: [:index, :new, :create]
   resources :users
+  resources :documents, only: [:index]
+
 
   scope :api do
     post 'led', to: 'api#led'
