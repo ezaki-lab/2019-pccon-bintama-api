@@ -16,8 +16,12 @@ class ApiController < ApplicationController
 			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this effect!' }
 		end
 		
-		url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color]
-		Net::HTTP.get_print(URI.parse(url))
+		if params[:id] != 4
+			url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color]
+			Net::HTTP.get_print(URI.parse(url))
+		else
+			url = Device.find_by(id: params[:id]).url
+			Net::HTTP.get_print(URI.parse(url))
 
 		update
 
