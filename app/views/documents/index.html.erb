@@ -1,0 +1,136 @@
+<h1 class="title">TABSドキュメント<h1>
+
+<h2 class="subtitle is-4">機能概要</h2>
+<table border="1">
+  <tr>
+		<th>URL</th>
+		<th>リクエストメソッド</th>
+		<th>機能の説明</th>
+  </tr>
+  <tr>
+		<td>http://os3-357-11881.vs.sakura.ne.jp:3000/api/led</td>
+		<td>POST</td>
+    <td>指定されたIoTデバイスのLEDを光らせる。色の指定可能</td>
+  </tr>
+  <tr>
+    <td>http://os3-357-11881.vs.sakura.ne.jp:3000/api/image</td>
+		<td>POST</td>
+		<td>指定されたIoTデバイスに繋がれた映像出力機器に画像を出力させる。</td>
+	</tr>
+  <tr>
+    <td>http://os3-357-11881.vs.sakura.ne.jp:3000/api/place/:id</td>
+		<td>GET</td>
+		<td>指定されたIoTデバイスの位置情報を返す。idパラメータにIoTデバイスのIDを指定する。</td>
+  </tr>
+</table>
+
+<h2 class="subtitle is-4">機能詳細</h2>
+<h3 class="subtitle is-5">初めに</h3>
+<p>存在しないユーザーIDを指定した場合、以下のようなJSONデータが返されます</p>
+
+<pre><code>
+{
+	'status': 'ERROR',
+	'message': 'Error! Donts find user_id in API database!'
+}
+</code></pre>
+
+<p>存在しないデバイスIDを指定した場合、以下のようなJSONデータが返されます</p>
+
+<pre><code>
+{
+	'status': 'ERROR',
+	'message': 'Error! Donts find id in API database!'
+}
+</code></pre>
+
+<p>あなたがTABS上で登録していないIoTデバイスを指定した場合、以下のようなJSONデータが返されます</p>
+
+<pre><code>
+{
+	'status': 'ERROR',
+	'message': 'Error! You donts registration this device id in API!'
+}
+</code></pre>
+<p><br></p>
+
+<h3 class="subtitle is-5">LED</h3>
+<p>LED点灯の場合、id, user_id, color, effectの４つのキーを持つJSONデータをPOSTしてください。</p>
+<p>idはIoTデバイスのID、user_idはあなたのユーザーID、colorは光らせたい色、effectは光らせ方です</p>
+<p>colorで指定できる色は、red, blue, green, white, orange, purple, yellow_green, clearの８つです</p>
+<p>effectで指定できる光らせ方は、random, event, ripples, allの４つです</p>
+<p>以下にPOSTするJSONデータの例を挙げます。型などに気をつけてください。</p>
+
+<pre><code>
+{ 
+	'id': 1,
+	'user_id': 'hogehoge',
+	'color': 'red',
+	'effect': 'random'
+}
+</code></pre>
+
+<p>POSTに成功した場合、以下のようなJSONデータが返されます。</p>
+
+<pre><code>
+{
+	'status': 'SUCCESS',
+	'message': 'Success! API commanded to your IoT device!'
+}
+</code></pre>
+
+<p>用意されていない色を指定した場合、以下のようなJSONデータが返されます。</p>
+
+<pre><code>
+{
+	'status': 'ERROR',
+	'message': 'Error! API doesnt correspondence this color!'
+}
+</code></pre>
+
+<p>用意されていない光らせ方を指定した場合、以下のようなJSONデータが返されます</p>
+
+<pre><code>
+{
+	'status': 'ERROR',
+	'message': 'Error! API doesnt correspondence this effect!'
+}
+</code></pre>
+<p><br></p>
+
+<h3 class="subtitle is-5">画像</h3>
+<p>画像出力の場合、id, user_id, path, secondの４つのキーを持つJSONデータをPOSTしてください。</p>
+<p>idはIoTデバイスのID、user_idはあなたのユーザーID、pathはIoTデバイス内の画像のパス、secondは出力したい秒数です。</p>
+<p>以下にPOSTするJSONデータの例を挙げます。型などに気をつけてください。</p>
+
+<pre><code>
+{ 
+	'id': 1,
+	'user_id': 'hogehoge',
+	'path': 'hoge.jpg',
+	'second': 180
+}
+</code></pre>
+
+<p>POSTに成功した場合、以下のようなJSONデータが返されます。</p>
+
+<pre><code>
+{
+	'status': 'SUCCESS',
+	'message': 'Success! API commanded to your IoT device!'
+}
+</code></pre>
+<p><br><p>
+
+<h3 class="subtitle is-5">位置情報</h3>
+<p>IoTデバイスの位置情報が知りたい場合、項目「機能概要」で書いたようなURLにGET通信してください。</p>
+<p>例えば"http://os3-357-11881.vs.sakura.ne.jp:3000/api/place/1"にGETした場合、例として以下のようなJSONデータが返されます。</p>
+
+<pre><code>
+{
+	'status': 'SUCCESS',
+	'message': 'Success! This device’s place data.',
+	'latitude': 123,
+	'longitude': 25
+}
+</code></pre>
