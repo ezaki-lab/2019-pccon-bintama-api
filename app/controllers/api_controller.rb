@@ -35,13 +35,12 @@ class ApiController < ApplicationController
 
 	def place
 		#デバイスIDが存在するかチェック
-		if DevicePlace.find_by(device_id: params[:id]) == nil
+		if DevicePlace.find_by(id: params[:id]) == nil
 			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		else
+			update
+			render json: { status: 'SUCCESS', message: 'Success! This device’s place data.', latitude: DevicePlace.find_by(device_id: params[:id]).latitude, longitude: DevicePlace.find_by(device_id: params[:id]).longitude }
 		end
-
-		update
-
-		render json: { status: 'SUCCESS', message: 'Success! This device’s place data.', latitude: DevicePlace.find_by(device_id: params[:id]).latitude, longitude: DevicePlace.find_by(device_id: params[:id]).longitude }
 	end
 
 	def new
@@ -83,10 +82,10 @@ class ApiController < ApplicationController
 	end
 
 	def update
-		new_date = Device.find(params[:id])
-		new_date.updated_at = Time.new
-		p "aaaaaaaaaaaaa"
-		p Time.new
-		new_date.save
+		if Device.find_by(id: params[:id])
+			new_date = Device.find_by(id: params[:id])
+			new_date.updated_at = Time.new
+			new_date.save
+		end
 	end
 end
