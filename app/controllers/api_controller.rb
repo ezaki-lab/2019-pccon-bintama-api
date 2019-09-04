@@ -76,7 +76,7 @@ class ApiController < ApplicationController
 		end
 
 		#ユーザーがそのデバイスを登録しているかチェック
-		DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
+		if DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
 			render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
 		end
 	end
