@@ -22,6 +22,7 @@ class ApiController < ApplicationController
 		else
 			url = Device.find_by(id: params[:id]).url
 			Net::HTTP.get_print(URI.parse(url))
+		end
 
 		update
 
