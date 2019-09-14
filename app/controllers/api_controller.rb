@@ -3,7 +3,7 @@ class ApiController < ApplicationController
 	before_action :check, only: [:led, :image]
 	protect_from_forgery :except => [:led, :image, :new]
 	def led
-		color_list = ["red", "blue", "green", "white", "orange", "purple", "yellow_green", "clear"]
+		color_list = ["red", "blue", "green", "white", "yellow", "purple", "yellow_green", "clear"]
 		effect_list = ["random", "event", "ripples", "all"]
 
 		#用意されている色かどうかチェック
