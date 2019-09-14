@@ -42,6 +42,17 @@ class ApiController < ApplicationController
 		end
 	end
 
+	def place_new
+		if DevicePlace.find_by(id: params[:id])
+			update
+			new_place = DevicePlace.find_by(id: params[:id])
+			new_place.longitude = params[:longitude]
+			new_place.latitude = params[:latitude]
+			new_place.save
+		else
+			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+	end
+
 	def new
 		#既にデバイステーブルにトークンが保存されているかチェック
 		if Device.find_by(token: params[:token]) == nil
