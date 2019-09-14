@@ -22,6 +22,11 @@
 		<td>GET</td>
 		<td>指定されたIoTデバイスの位置情報を返す。idパラメータにIoTデバイスのIDを指定する。</td>
   </tr>
+  <tr>
+    <td>http://os3-357-11881.vs.sakura.ne.jp:3000/api/show/:user_id</td>
+		<td>GET</td>
+		<td>自分が登録しているIoTデバイス全てのデバイスIDを返す。</td>
+  </tr>
 </table>
 
 <h2 class="subtitle is-4">機能詳細</h2>
@@ -134,4 +139,15 @@
 	'longitude': 25
 }
 </code></pre>
-<p>idはIoTデバイス自体のIDですが、存在しないIDを指定するとエラーを吐きます。</p>
+<p>idはIoTデバイス自体のIDですが、存在しないIDを指定するとエラーを吐きます。<br><br></p>
+
+<h3 class="subtitle is-5">登録している全デバイスIDの表示</h3>
+<p>自分が登録しているIoTデバイス全てのデバイスIDを返します。GETするURLは以下の通りです。<br>:user_idは自分のユーザーIDを入れてください。</p>
+<p>"http://os3-357-11881.vs.sakura.ne.jp:3000/api/show/:user_id"</p>
+<p>正常に行くと以下のようなJSONデータ例が返されます。</p>
+<pre><code>
+{
+	'status': 'SUCCESS',
+	'device_list': [1, 2, 3, 4]
+}
+</code></pre>
