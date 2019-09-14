@@ -4,16 +4,10 @@ class ApiController < ApplicationController
 	protect_from_forgery :except => [:led, :image, :new]
 	def led
 		color_list = ["red", "blue", "green", "white", "yellow", "purple", "yellow_green", "clear"]
-		effect_list = ["random", "event", "ripples", "all"]
 
 		#用意されている色かどうかチェック
 		if color_list.include?(params[:color]) == false
 			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
-		end
-
-		#用意されているエフェクトかどうかチェック
-		if effect_list.include?(params[:effect]) == false
-			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this effect!' }
 		end
 		
 		if params[:id] != 4
