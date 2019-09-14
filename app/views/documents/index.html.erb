@@ -55,10 +55,9 @@
 <p><br></p>
 
 <h3 class="subtitle is-5">LED</h3>
-<p>LED点灯の場合、id, user_id, color, effectの４つのキーを持つJSONデータをPOSTしてください。</p>
-<p>idはIoTデバイスのID、user_idはあなたのユーザーID、colorは光らせたい色、effectは光らせ方です</p>
-<p>colorで指定できる色は、red, blue, green, white, orange, purple, yellow_green, clearの８つです</p>
-<p>effectで指定できる光らせ方は、random, event, ripples, allの４つです</p>
+<p>LED点灯の場合、id, user_id, colorの3つのキーを持つJSONデータをPOSTしてください。</p>
+<p>idはIoTデバイスのID、user_idはあなたのユーザーID、colorは光らせたい色です</p>
+<p>colorで指定できる色は、red, blue, green, white, yellow, purple, yellow_green, clearの８つです</p>
 <p>以下にPOSTするJSONデータの例を挙げます。型などに気をつけてください。</p>
 
 <pre><code>
@@ -66,7 +65,6 @@
 	'id': 1,
 	'user_id': 'hogehoge',
 	'color': 'red',
-	'effect': 'random'
 }
 </code></pre>
 
@@ -85,15 +83,6 @@
 {
 	'status': 'ERROR',
 	'message': 'Error! API doesnt correspondence this color!'
-}
-</code></pre>
-
-<p>用意されていない光らせ方を指定した場合、以下のようなJSONデータが返されます</p>
-
-<pre><code>
-{
-	'status': 'ERROR',
-	'message': 'Error! API doesnt correspondence this effect!'
 }
 </code></pre>
 <p><br></p>
@@ -134,3 +123,15 @@
 	'longitude': 25
 }
 </code></pre>
+
+<p><br>新しい位置情報登録は基本的に自動で行われますが、デバッグ等で自分で登録したいときは以下のURLにPOSTします</p>
+<p>"http://os3-357-11881.vs.sakura.ne.jp:3000/api/place_new"</p>
+<p>POSTするデータの例は以下のようになります</p>
+<pre><code>
+{
+	'id': 1,
+	'latitude': 123,
+	'longitude': 25
+}
+</code></pre>
+<p>idはIoTデバイス自体のIDですが、存在しないIDを指定するとエラーを吐きます。</p>
