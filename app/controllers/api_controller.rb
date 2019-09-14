@@ -49,8 +49,10 @@ class ApiController < ApplicationController
 			new_place.longitude = params[:longitude]
 			new_place.latitude = params[:latitude]
 			new_place.save
+			render json: { status: 'SUCCESS', message: 'Success! Make device place date in API database!' }
 		else
 			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		end
 	end
 
 	def new
@@ -71,6 +73,19 @@ class ApiController < ApplicationController
 		device.url = params[:url]
 		device.save
 		render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
+	end
+
+	def show
+		if User.find_by(user_id: params[:user_id])
+			device_list = []
+			device = DeviceUser.where(user_id: params[:user_id]).all
+			device.each do |f|
+				device_list.push(f.device_id)
+			end
+			render json: { status: 'SUCCESS', device_list: device_list }
+		else
+			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		end
 	end
 
 	private
