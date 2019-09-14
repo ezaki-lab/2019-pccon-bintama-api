@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     post 'image', to: 'api#image'
     get 'place/:id', to: 'api#place'
     get 'new/:token/:url', to: 'api#new'
+    post 'place_new', to: 'api#place_new'
   end
 end
