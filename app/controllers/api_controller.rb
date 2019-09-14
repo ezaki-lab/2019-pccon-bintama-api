@@ -1,7 +1,7 @@
 require 'net/http'
 class ApiController < ApplicationController
 	before_action :check, only: [:led, :image]
-	protect_from_forgery :except => [:led, :image, :new]
+	protect_from_forgery :except => [:led, :image, :new, :place_new]
 	def led
 		color_list = ["red", "blue", "green", "white", "yellow", "purple", "yellow_green", "clear"]
 
