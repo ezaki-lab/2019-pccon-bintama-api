@@ -64,15 +64,13 @@ class ApiController < ApplicationController
 			device.url = params[:url]
 			device.save
 			render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
+		else
+			#保存されていたらURLのみをアップデート
+			device = Device.new(token: params[:token])
+			device.url = params[:url]
+			device.save
+			render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
 		end
-
-		update
-
-		#保存されていたらURLのみをアップデート
-		device = Device.new(token: params[:token])
-		device.url = params[:url]
-		device.save
-		render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
 	end
 
 	def show
