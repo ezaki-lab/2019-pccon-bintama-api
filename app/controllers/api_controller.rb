@@ -66,7 +66,7 @@ class ApiController < ApplicationController
 			render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
 		else
 			#保存されていたらURLのみをアップデート
-			device = Device.new(token: params[:token])
+			device = Device.find_by(token: params[:token])
 			device.url = params[:url]
 			device.save
 			render json: { status: 'SUCCESS', message: 'Success! Make device date in API database!' }
