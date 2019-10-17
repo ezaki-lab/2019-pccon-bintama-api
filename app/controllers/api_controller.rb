@@ -51,7 +51,11 @@ class ApiController < ApplicationController
 			new_place.save
 			render json: { status: 'SUCCESS', message: 'Success! Make device place date in API database!' }
 		else
-			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+			new_place = DevicePlace.new
+			new_place.longitude = params[:longitude]
+			new_place.latitude = params[:latitude]
+			new_place.save
+			render json: { status: 'SUCCESS', message: 'Success! Make device place date in API database!' }
 		end
 	end
 
