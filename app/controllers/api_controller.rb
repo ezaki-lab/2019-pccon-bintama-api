@@ -10,7 +10,7 @@ class ApiController < ApplicationController
 			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
 		else
 			if params[:id] != 4
-				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color]
+				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
 				Net::HTTP.get_print(URI.parse(url))
 			else
 				url = Device.find_by(id: params[:id]).url
