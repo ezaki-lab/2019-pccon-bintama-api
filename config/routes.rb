@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     get 'new/:token/:url', to: 'api#new'
     post 'place_new', to: 'api#place_new'
     get 'show/:user_id', to: 'api#show'
+    post 'id', to: 'api#id'
   end
 end
