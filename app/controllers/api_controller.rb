@@ -91,6 +91,14 @@ class ApiController < ApplicationController
 		end
 	end
 
+	def id
+		if Device.find_by(token: params[:token])
+			render json: { status: 'SUCCESS', token: Device.find_by(token: params[:token]).id }
+		else
+			render json: { status: 'ERROR', message: 'Error! Donts token id in API database!' }
+		end
+	end
+
 	private
 	def check
 		#ユーザーIDが存在するかチェック
