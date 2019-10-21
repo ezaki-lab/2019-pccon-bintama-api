@@ -61,7 +61,7 @@
 
 <h3 class="subtitle is-5">LED</h3>
 <p>LED点灯の場合、id, user_id, colorの3つのキーを持つJSONデータをPOSTしてください。</p>
-<p>idはIoTデバイスのID、user_idはあなたのユーザーID、colorは光らせたい色です</p>
+<p>idはIoTデバイスのID、user_idはあなたのユーザーID、colorは光らせたい色、timeは光らせたい時間です</p>
 <p>colorで指定できる色は、red, blue, green, white, yellow, purple, skyblue, clearの８つです</p>
 <p>以下にPOSTするJSONデータの例を挙げます。型などに気をつけてください。</p>
 
@@ -70,6 +70,7 @@
 	'id': 1,
 	'user_id': 'hogehoge',
 	'color': 'red',
+	'time': 10
 }
 </code></pre>
 
