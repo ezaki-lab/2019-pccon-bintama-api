@@ -101,7 +101,7 @@ class ApiController < ApplicationController
 
 	private
 	def check
-		ユーザーIDが存在するかチェック
+		#ユーザーIDが存在するかチェック
 		if User.find_by(user_id: params[:user_id]) == nil
 			render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
 		elsif Device.find_by(id: params[:id]) == nil
