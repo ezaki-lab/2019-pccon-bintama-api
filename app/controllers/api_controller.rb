@@ -104,15 +104,9 @@ class ApiController < ApplicationController
 		#ユーザーIDが存在するかチェック
 		if User.find_by(user_id: params[:user_id]) == nil
 			render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
-		end
-
-		#デバイスIDが存在するかチェック
-		if Device.find_by(id: params[:id]) == nil
+		elsif Device.find_by(id: params[:id]) == nil
 			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
-		end
-
-		#ユーザーがそのデバイスを登録しているかチェック
-		if DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
+		elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
 			render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
 		end
 	end
