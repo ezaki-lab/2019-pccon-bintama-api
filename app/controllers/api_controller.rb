@@ -102,13 +102,13 @@ class ApiController < ApplicationController
 	private
 	def check
 		#ユーザーIDが存在するかチェック
-		if User.find_by(user_id: params[:user_id]) == nil
-			render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
-		elsif Device.find_by(id: params[:id]) == nil
-			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
-		elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
-			render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
-		end
+		#if User.find_by(user_id: params[:user_id]) == nil
+		#	render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
+		#elsif Device.find_by(id: params[:id]) == nil
+		#	render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		#elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
+		#	render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
+		#end
 	end
 
 	def update
