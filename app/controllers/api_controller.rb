@@ -3,15 +3,14 @@ class ApiController < ApplicationController
 	before_action :check, only: [:led, :image]
 	protect_from_forgery :except => [:led, :image, :new, :place_new]
 	def led
-		#color_list = ["red", "blue", "green", "white", "yellow", "purple", "skyblue", "clear"]
+		color_list = ["red", "blue", "green", "white", "yellow", "purple", "skyblue", "clear"]
 
 		#用意されている色かどうかチェック
-		#if color_list.include?(params[:color]) == false
-		#	render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
-		#else
-		if
+		if color_list.include?(params[:color]) == false
+			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
+		else
 			if params[:id] != 4
-				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
+				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color]
 				Net::HTTP.get_print(URI.parse(url))
 			else
 				url = Device.find_by(id: params[:id]).url
@@ -102,14 +101,14 @@ class ApiController < ApplicationController
 
 	private
 	def check
-		#ユーザーIDが存在するかチェック
-		#if User.find_by(user_id: params[:user_id]) == nil
-		#	render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
-		#elsif Device.find_by(id: params[:id]) == nil
-		#	render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
-		#elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
-		#	render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
-		#end
+		ユーザーIDが存在するかチェック
+		if User.find_by(user_id: params[:user_id]) == nil
+			render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
+		elsif Device.find_by(id: params[:id]) == nil
+			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == false
+			render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
+		end
 	end
 
 	def update
