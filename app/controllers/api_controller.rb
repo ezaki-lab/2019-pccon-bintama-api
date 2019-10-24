@@ -24,7 +24,7 @@ class ApiController < ApplicationController
 	end
 
 	def image
-		url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/image/" + params[:path] + "/" + params[:second].to_s
+		url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/image"
 		Net::HTTP.get_print(URI.parse(url))
 
 		update
