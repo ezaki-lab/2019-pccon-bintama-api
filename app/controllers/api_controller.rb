@@ -107,6 +107,7 @@ class ApiController < ApplicationController
 			end
 		else
 			render json: { status: 'ERROR', message: 'API Error' }
+		end
 	end
 
 	private
