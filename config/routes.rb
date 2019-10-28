@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     post 'place_new', to: 'api#place_new'
     get 'show/:user_id', to: 'api#show'
     post 'id', to: 'api#id'
+    get 'destroy/:id/:user_id', to: 'api#destroy'
   end
 end
