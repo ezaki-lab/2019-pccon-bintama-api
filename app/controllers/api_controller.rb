@@ -99,6 +99,16 @@ class ApiController < ApplicationController
 		end
 	end
 
+	def destroy
+		item = Device.find(params[:id])
+		if item.destroy
+			if DeviceUser.find_by(device_id: params[:id], user_id: params[:user_id]).destroy
+				render json: { status: 'ERROR', message: 'API Error' }
+			end
+		else
+			render json: { status: 'ERROR', message: 'API Error' }
+	end
+
 	private
 	def check
 		#ユーザーIDが存在するかチェック
