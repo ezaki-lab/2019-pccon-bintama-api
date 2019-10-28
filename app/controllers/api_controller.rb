@@ -101,7 +101,7 @@ class ApiController < ApplicationController
 
 	def destroy
 		if DeviceUser.find_by(device_id: params[:id], user_id: params[:user_id]).destroy
-			render json: { status: 'ERROR', message: 'API Error' }
+			render json: { status: 'SUCCESS', message: 'OK' }
 		else
 			render json: { status: 'ERROR', message: 'API Error' }
 		end
