@@ -7,7 +7,7 @@ class ApiController < ApplicationController
 
 		#用意されている色かどうかチェック
 		#if color_list.include?(params[:color]) == false
-			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
+			#render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
 		#else
 		if params[:id] != 4
 			url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
