@@ -10,7 +10,7 @@ class ApiController < ApplicationController
 			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
 		else
 			if params[:id] != 4
-				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color]
+				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
 				Net::HTTP.get_print(URI.parse(url))
 			else
 				url = Device.find_by(id: params[:id]).url
@@ -110,10 +110,10 @@ class ApiController < ApplicationController
 	private
 	def check
 		#ユーザーIDが存在するかチェック
-		if User.find_by(user_id: params[:user_id]) == nil
-			render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
-		elsif Device.find_by(id: params[:id]) == nil
-			render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
+		#if User.find_by(user_id: params[:user_id]) == nil
+		#	render json: { status: 'ERROR', message: 'Error! Donts find user_id in API database!' }
+		#elsif Device.find_by(id: params[:id]) == nil
+		#	render json: { status: 'ERROR', message: 'Error! Donts find id in API database!' }
 		#elsif DeviceUser.where(user_id: params[:user_id]).pluck(:device_id).include?(params[:id]) == true
 		#	render json: { status: 'ERROR', message: 'Error! You donts registration this device id in API!' }
 		end
