@@ -3,23 +3,23 @@ class ApiController < ApplicationController
 	before_action :check, only: [:led, :image]
 	protect_from_forgery :except => [:led, :image, :new, :place_new]
 	def led
-		color_list = ["red", "blue", "green", "white", "yellow", "purple", "skyblue", "clear"]
+		#color_list = ["red", "blue", "green", "white", "yellow", "purple", "skyblue", "clear"]
 
 		#用意されている色かどうかチェック
-		if color_list.include?(params[:color]) == false
+		#if color_list.include?(params[:color]) == false
 			render json: { status: 'ERROR', message: 'Error! API doesnt correspondence this color!' }
+		#else
+		if params[:id] != 4
+			url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
+			Net::HTTP.get_print(URI.parse(url))
 		else
-			if params[:id] != 4
-				url = "http://" + Device.find_by(id: params[:id]).url + ".ngrok.io/led/" + params[:color] + "/" + params[:time].to_s
-				Net::HTTP.get_print(URI.parse(url))
-			else
-				url = Device.find_by(id: params[:id]).url
-				Net::HTTP.get_print(URI.parse(url))
-			end
-	
-			update
-			render json: { status: 'SUCCESS', message: 'Success! API commanded to your IoT device!' }
+			url = Device.find_by(id: params[:id]).url
+			Net::HTTP.get_print(URI.parse(url))
 		end
+	
+		update
+		render json: { status: 'SUCCESS', message: 'Success! API commanded to your IoT device!' }
+		#end
 
 	end
 
